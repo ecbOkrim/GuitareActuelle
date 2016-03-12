@@ -1,0 +1,32 @@
+{
+  "name": "guitare_actuelle",
+  "version": "0.0.1",
+  "description": "Guitare actuelle Web page",
+  "main": "index.html",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "GuitareActuelle"
+  },
+  "keywords": [
+    "Guitare",
+    "Actuelle",
+    "Web",
+    "Page"
+  ],
+  "author": "Okrim Rener",
+  "license": "ISC",
+  "dependencies": {
+    "grunt": "^0.4.5"
+  },
+  "devDependencies": {
+    "grunt-contrib-concat": "^1.0.0",
+    "grunt-contrib-connect": "^1.0.0",
+    "grunt-contrib-imagemin": "^1.0.0",
+    "grunt-contrib-uglify": "^1.0.0",
+    "grunt-contrib-watch": "^0.6.1",
+    "grunt-newer": "^1.1.2"
+  }
+}
