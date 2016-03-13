@@ -1,0 +1,1 @@
+function test(){var a;a=6,window.alert(11+a)}
