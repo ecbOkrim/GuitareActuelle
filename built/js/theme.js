@@ -1,1 +1,0 @@
-function world(){var a=25;window.alert("hey"+a)}
