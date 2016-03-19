@@ -1,0 +1,1 @@
+var lol=27;console.log("hey"+lol);

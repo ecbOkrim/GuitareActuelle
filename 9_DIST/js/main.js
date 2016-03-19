@@ -1,0 +1,1 @@
+var x;x=8,window.alert(11+x);
