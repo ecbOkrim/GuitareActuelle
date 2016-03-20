@@ -2,11 +2,21 @@ module.exports = function(grunt){
 
 	grunt.initConfig({
 		clean: {
-			all:['9_DIST/*/**'],
-			allDistHtml:['9_DIST/*.html'],
-			allDistImg:['9_DIST/img/*/**'],
-			uselessCss:['9_DIST/css/**','!9_DIST/css/style.css'],
-			uselessJs:['9_DIST/js/**','!9_DIST/js/script.js']
+			all:{
+				src:['9_DIST/*']
+			},
+			allDistHtml:{
+				src:['9_DIST/*.html']
+			},
+			allDistImg:{
+				src:['9_DIST/img/*']
+			},
+			uselessCss:{
+				src:['9_DIST/css/*.css','!9_DIST/css/style.css']
+			},
+			uselessJs:{
+				src:['9_DIST/js/*.js','!9_DIST/js/script.js']
+			}
 		},
 
     htmlmin: {
@@ -127,8 +137,8 @@ module.exports = function(grunt){
 
     watch: {
       files: {
-        files: ['/*/**','3_IMG'],
-        tasks: ['def'],
+        files: ['1_HTML/*','2_CSS/*','4_JS/*'],
+        tasks: ['default'],
         options: {
           spawn: false,
           livereload: true,
@@ -156,12 +166,11 @@ module.exports = function(grunt){
   grunt.loadNpmTasks('grunt-contrib-connect');
   grunt.loadNpmTasks('grunt-contrib-watch');
 
-	grunt.registerTask('clean', ['clean:all']);
+	grunt.registerTask('cleanAll', ['clean:all']);
 	grunt.registerTask('html', ['clean:allDistHtml','htmlmin']);
 	grunt.registerTask('css', ['compass','cssmin','concat:css','clean:uselessCss']);
 	grunt.registerTask('images', ['newer:responsive_images']);
 	grunt.registerTask('js', ['uglify','concat:js','clean:uselessJs']);
-	//grunt.registerTask('default', ['html','css','images','js']);
-	grunt.registerTask('default', ['clean:allDistHtml','htmlmin','compass','cssmin','concat:css','clean:uselessCss','newer:responsive_images','uglify','concat:js','clean:uselessJs']);
-	grunt.registerTask('all', ['clean:allDistHtml','htmlmin','compass','cssmin','concat:css','clean:uselessCss','newer:responsive_images','uglify','concat:js','clean:uselessJs','connect','watch']);
+	grunt.registerTask('default', ['html','css','images','js']);
+	grunt.registerTask('all', ['default','connect','watch']);
 };
