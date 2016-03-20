@@ -10,6 +10,7 @@ body{
   margin-top: 100px;
   float: right;
   width: 160px;
+  text-transform: uppercase;
 }
 
 .mainContainer nav ul{

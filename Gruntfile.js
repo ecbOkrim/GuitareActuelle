@@ -1,6 +1,14 @@
 module.exports = function(grunt){
 
 	grunt.initConfig({
+		clean: {
+			all:['9_DIST/*/**'],
+			allDistHtml:['9_DIST/*.html'],
+			allDistImg:['9_DIST/img/*/**'],
+			uselessCss:['9_DIST/css/**','!9_DIST/css/style.css'],
+			uselessJs:['9_DIST/js/**','!9_DIST/js/script.js']
+		},
+
     htmlmin: {
       dist: {
         options: {
@@ -15,6 +23,16 @@ module.exports = function(grunt){
 		    }]
       }
     },
+
+		compass: {
+			dist: {
+	      options: {
+	        sassDir: '2_CSS',
+	        cssDir: '2_CSS',
+	        environment: 'production'
+	      }
+	    }
+	  },
 
 		cssmin: {
 			options: {
@@ -108,17 +126,9 @@ module.exports = function(grunt){
     },
 
     watch: {
-      html: {
-        files: ['1_HTML/*'],
-        tasks: ['htmlmin'],
-        options: {
-          spawn: false,
-          livereload: true,
-        },
-      },
-      css: {
-        files: ['2_CSS/*'],
-        tasks: ['cssmin','concat:css'],
+      files: {
+        files: ['/*/**','3_IMG'],
+        tasks: ['def'],
         options: {
           spawn: false,
           livereload: true,
@@ -131,26 +141,27 @@ module.exports = function(grunt){
           spawn: false,
           livereload: true,
         },
-      },
-      js: {
-        files: ['4_JS/*'],
-        tasks: ['uglify','concat:js'],
-        options: {
-          spawn: false,
-          livereload: true,
-        },
-      },
-    },
+      }
+    }
 	});
 
-  grunt.loadNpmTasks('grunt-newer');
+	grunt.loadNpmTasks('grunt-contrib-clean');
   grunt.loadNpmTasks('grunt-contrib-htmlmin');
+	grunt.loadNpmTasks('grunt-contrib-compass');
 	grunt.loadNpmTasks('grunt-contrib-cssmin');
 	grunt.loadNpmTasks('grunt-contrib-uglify');
 	grunt.loadNpmTasks('grunt-contrib-concat');
+	grunt.loadNpmTasks('grunt-newer');
   grunt.loadNpmTasks('grunt-responsive-images');
   grunt.loadNpmTasks('grunt-contrib-connect');
   grunt.loadNpmTasks('grunt-contrib-watch');
 
-	grunt.registerTask('default', ['htmlmin','cssmin','uglify','concat:css','concat:js','newer:responsive_images','connect','watch']);
+	grunt.registerTask('clean', ['clean:all']);
+	grunt.registerTask('html', ['clean:allDistHtml','htmlmin']);
+	grunt.registerTask('css', ['compass','cssmin','concat:css','clean:uselessCss']);
+	grunt.registerTask('images', ['newer:responsive_images']);
+	grunt.registerTask('js', ['uglify','concat:js','clean:uselessJs']);
+	//grunt.registerTask('default', ['html','css','images','js']);
+	grunt.registerTask('default', ['clean:allDistHtml','htmlmin','compass','cssmin','concat:css','clean:uselessCss','newer:responsive_images','uglify','concat:js','clean:uselessJs']);
+	grunt.registerTask('all', ['clean:allDistHtml','htmlmin','compass','cssmin','concat:css','clean:uselessCss','newer:responsive_images','uglify','concat:js','clean:uselessJs','connect','watch']);
 };
