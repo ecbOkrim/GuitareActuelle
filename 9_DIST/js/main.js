@@ -1,1 +1,1 @@
-var x;x=8,window.alert(11+x);
+function loadOk(){var a=$("nav").find("li");a.on("mouseenter",function(){$(this).addClass("hovered")}),a.on("mouseleave",function(){$(this).removeClass("hovered")});var b=$("button");b.on("click",clickBtn)}function clickBtn(){$.ajax("test.html",{success:function(a){$("button").html("HEY ").append(a)},error:function(a,b,c){alert("Err: "+b+" \nMessage: "+c)}})}$(document).ready(loadOk);
