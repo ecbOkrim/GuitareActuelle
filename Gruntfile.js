@@ -38,7 +38,7 @@ module.exports = function(grunt){
 			dist: {
 	      options: {
 	        sassDir: '2_CSS',
-	        cssDir: '2_CSS',
+	        cssDir: '9_DIST/css',
 	        environment: 'production'
 	      }
 	    }
@@ -51,7 +51,7 @@ module.exports = function(grunt){
 		  target: {
 		    files: [{
 		      expand: true,
-		      cwd: '2_CSS/',
+		      cwd: '9_DIST/css',
 		      src: ['*.css'],
 		      dest: '9_DIST/css'
 		    }]
@@ -136,9 +136,17 @@ module.exports = function(grunt){
     },
 
     watch: {
-      files: {
-        files: ['1_HTML/*','2_CSS/*','4_JS/*'],
-        tasks: ['default'],
+      html: {
+        files: ['1_HTML/*'],
+        tasks: ['html'],
+        options: {
+          spawn: false,
+          livereload: true,
+        },
+      },
+			css: {
+        files: ['2_CSS/*'],
+        tasks: ['css'],
         options: {
           spawn: false,
           livereload: true,
@@ -146,7 +154,15 @@ module.exports = function(grunt){
       },
       imgs: {
         files: ['3_IMG/*'],
-        tasks: ['newer:responsive_images'],
+        tasks: ['images'],
+        options: {
+          spawn: false,
+          livereload: true,
+        },
+      },
+			js: {
+        files: ['4_JS/*'],
+        tasks: ['js'],
         options: {
           spawn: false,
           livereload: true,
