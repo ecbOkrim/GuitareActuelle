@@ -1,6 +1,28 @@
 $(document).ready(loadOk);
 
 function loadOk(){
+  var menuBtn = $("#mainMenu");
+  var title = $("#titleContainer");
+  var titleTxt = $("#titleContainer").find(".title");
+
+  menuBtn.on("mouseover", function(){
+    mOver($(this));
+  });
+  menuBtn.on("mouseleave", function(){
+    mOut($(this));
+  });
+  menuBtn.on("click", function(){
+    mClick($(this));
+  });
+
+  title.on("mouseover", function(){
+    mOver($(titleTxt));
+  });
+  title.on("mouseleave", function(){
+    mOut($(titleTxt));
+  });
+
+  /*
   var menuItems = $("nav").find("li");
   var menuBar = $("nav").find("ul");
   var menuBox = $("nav").find(".slideIn");
@@ -28,4 +50,23 @@ function loadOk(){
     menuItems.removeClass("hovered");
     menuBox.removeClass("hovered");
   });
+  */
+}
+
+function mOver(a){
+  $(a).addClass("hovered");
+}
+
+function mOut(a){
+  $(a).removeClass("hovered");
+}
+
+function mClick(a){
+  if ($(a).hasClass("selected")) {
+      $(a).removeClass("selected");
+      $(a).addClass("hovered");
+  }else{
+      $(a).removeClass("hovered");
+      $(a).addClass("selected");
+  }
 }

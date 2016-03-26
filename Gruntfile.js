@@ -125,6 +125,29 @@ module.exports = function(grunt){
       }
     },
 
+		copy: {
+		  main: {
+		    files: [
+					/*
+		      // includes files within path
+		      {expand: true, src: ['path/*'], dest: 'dest/', filter: 'isFile'},
+
+		      // includes files within path and its sub-directories
+		      {expand: true, src: ['path/**'], dest: 'dest/'},
+
+		      // flattens results to a single level
+		      {expand: true, flatten: true, src: ['path/**'], dest: 'dest/', filter: 'isFile'},
+
+		      // makes all src relative to cwd
+		      {expand: true, cwd: 'path/', src: ['**'], dest: 'dest/'},
+					*/
+
+		      // includes files within path and its sub-directories
+		      {expand: true, cwd: 'XX_OtherData', src: '**', dest: '9_DIST/'},
+		    ],
+		  },
+		},
+
     connect: {
       server: {
         options: {
@@ -179,6 +202,7 @@ module.exports = function(grunt){
 	grunt.loadNpmTasks('grunt-contrib-concat');
 	grunt.loadNpmTasks('grunt-newer');
   grunt.loadNpmTasks('grunt-responsive-images');
+	grunt.loadNpmTasks('grunt-contrib-copy');
   grunt.loadNpmTasks('grunt-contrib-connect');
   grunt.loadNpmTasks('grunt-contrib-watch');
 
@@ -188,5 +212,5 @@ module.exports = function(grunt){
 	grunt.registerTask('images', ['newer:responsive_images']);
 	grunt.registerTask('js', ['uglify','concat:js','clean:uselessJs']);
 	grunt.registerTask('default', ['html','css','images','js']);
-	grunt.registerTask('all', ['default','connect','watch']);
+	grunt.registerTask('all', ['default','copy','connect','watch']);
 };
