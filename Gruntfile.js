@@ -3,7 +3,12 @@ module.exports = function(grunt){
 	grunt.initConfig({
 		clean: {
 			all:{
-				src:['9_DIST/*']
+				options: {
+			    force: true
+			  },
+        files: [{
+					src:['9_DIST/*']
+		    }]
 			},
 			allDistHtml:{
 				src:['9_DIST/*.html']
@@ -19,6 +24,23 @@ module.exports = function(grunt){
 			}
 		},
 
+		jade: {
+		  compile: {
+		    options: {
+		      data: {
+		        debug: false
+		      }
+		    },
+				files: [{
+		      expand: true,
+		      cwd: '1_HTML/',
+		      src: ['**/*.jade'],
+		      dest: '9_DIST/',
+					ext: '.html'
+		    }]
+		  }
+		},
+
     htmlmin: {
       dist: {
         options: {
@@ -27,8 +49,8 @@ module.exports = function(grunt){
         },
         files: [{
 		      expand: true,
-		      cwd: '1_HTML/',
-		      src: ['*.html'],
+		      cwd: '9_DIST/',
+		      src: ['**/*.html'],
 		      dest: '9_DIST/'
 		    }]
       }
@@ -127,25 +149,13 @@ module.exports = function(grunt){
 
 		copy: {
 		  main: {
-		    files: [
-					/*
-		      // includes files within path
-		      {expand: true, src: ['path/*'], dest: 'dest/', filter: 'isFile'},
-
-		      // includes files within path and its sub-directories
-		      {expand: true, src: ['path/**'], dest: 'dest/'},
-
-		      // flattens results to a single level
-		      {expand: true, flatten: true, src: ['path/**'], dest: 'dest/', filter: 'isFile'},
-
-		      // makes all src relative to cwd
-		      {expand: true, cwd: 'path/', src: ['**'], dest: 'dest/'},
-					*/
-
-		      // includes files within path and its sub-directories
-		      {expand: true, cwd: 'XX_OtherData', src: '**', dest: '9_DIST/'},
-		    ],
-		  },
+		    files: [{
+					expand: true,
+					cwd: 'XX_OtherData',
+					src: '**',
+					dest: '9_DIST/'
+				}]
+		  }
 		},
 
     connect: {
@@ -195,6 +205,7 @@ module.exports = function(grunt){
 	});
 
 	grunt.loadNpmTasks('grunt-contrib-clean');
+	grunt.loadNpmTasks('grunt-contrib-jade');
   grunt.loadNpmTasks('grunt-contrib-htmlmin');
 	grunt.loadNpmTasks('grunt-contrib-compass');
 	grunt.loadNpmTasks('grunt-contrib-cssmin');
@@ -207,10 +218,10 @@ module.exports = function(grunt){
   grunt.loadNpmTasks('grunt-contrib-watch');
 
 	grunt.registerTask('cleanAll', ['clean:all']);
-	grunt.registerTask('html', ['clean:allDistHtml','htmlmin']);
+	grunt.registerTask('html', ['clean:allDistHtml', 'jade','htmlmin']);
 	grunt.registerTask('css', ['compass','cssmin','concat:css','clean:uselessCss']);
 	grunt.registerTask('images', ['newer:responsive_images']);
 	grunt.registerTask('js', ['uglify','concat:js','clean:uselessJs']);
 	grunt.registerTask('default', ['html','css','images','js']);
-	grunt.registerTask('all', ['default','copy','connect','watch']);
+	grunt.registerTask('all', ['cleanAll','default','copy','connect','watch']);
 };

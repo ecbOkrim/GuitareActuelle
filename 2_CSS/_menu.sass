@@ -1,0 +1,36 @@
+
+
+#mainMenu
+  position: absolute
+  height: 80px
+  line-height: 80px
+  width: 200px
+  text-align: center
+  background-color: $orange_1_TR
+  z-index: 1
+  cursor: pointer
+  //display: none
+
+  &.selected
+    background-color: $dark_1_TR
+
+  &:before
+    content: ""
+    position: absolute
+    top: 0
+    left: 0
+    right: 0
+    bottom: 0
+    background-color: $orange_1
+    z-index: -1
+    +scaleY(0.05)
+    +transform-origin(50%, 0%)
+    +transition (all, 400ms, ease-in-out, 200ms)
+
+  &.hovered:before
+    transform: scaleY(1)
+
+  div
+    display: inline-block
+    vertical-align: middle
+    padding: 0 10px

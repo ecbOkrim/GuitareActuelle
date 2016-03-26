@@ -1,9 +1,15 @@
 @import compass/css3
 @import reset
-@import variables
-@import colors
 @import font-awesome-4.5.0/font-awesome
 @import "http://fonts.googleapis.com/css?family=Ubuntu:regular,b,i,bi,500&subset=Latin"
+
+
+@import variables
+@import colors
+@import menu
+@import header
+@import side
+@import footer
 
 *
   //min-height: 10px
@@ -21,107 +27,12 @@ html
     min-height: 100%
     font-size: 1.6rem
 
-    .menu
-      background-color: $orange_1_TR
-      z-index: 1
-      text-align: center
-
-
-    // .appBg:before
-    //   position: absolute
-    //   z-index: -
-    //   content: ""
-    //   top: 0
-    //   left: 0
-    //   right: 0
-    //   bottom: 0
-    //   background-color: $orange_1
-    //   transform: scaleY(0.05)
-    //   transform-origin: 0 100%
-    //   +transition(all, 300ms, ease-in-out, 0ms)
-
-      &:hovered:before
-        transform: scaleY(1)
-
-    .selected
-      background-color: $dark_2_TR
-
-    #mainMenu
-      position: absolute
-      height: 80px
-      width: 200px
-      cursor: pointer
-
-      &:before
-        content: ""
-        display: inline-block
-        vertical-align: middle
-        height: 100%
-
-      #barsIcon
-        display: inline-block
-        vertical-align: middle
-        padding: 0 10px
-
-      #barsMenu
-        display: inline-block
-        vertical-align: middle
-        //padding: 0 10px
-
-
-    #blockMenu
-      position: absolute
-      top: 0
-      left: 0
-      width: 300px
-      height: 80%
-      background-color: $orange_1_TR
-      +transition(all, 300ms, ease-in-out, 0ms)
-
     #page
       top: 0
       right: 0
       bottom: 0
       left: 0
       background-color: $dark_1
-
-      #header
-        width: 100%
-        height: $headerHeight
-        overflow: hidden
-
-        #titleContainer
-          position: absolute
-          float: left
-          width: auto
-          top: 5rem
-          left: 20%
-
-          .title
-            position: relative
-            background-color: $orange_1_TR
-            font: normal 7rem $defFontStyle, sans-serif
-            color: $borderLight
-            padding: 0.5em 1em
-            border: 0.1em solid $borderLight
-            z-index: 1
-            cursor: pointer
-
-          .hovered
-            background-color: $orange_1
-
-          #headerTitle-1
-            margin-right: 2em
-
-          #headerTitle-2
-            margin-top: -0.1em
-            margin-left: 2em
-
-        img
-          margin-top: -60px
-          width: 100%
-          height: auto
-          opacity: 0.2
 
       #middle
         width: 80%
@@ -133,30 +44,3 @@ html
           width: 70%
           padding: 20px
           background-color: $dark_2
-
-        #sideContainer
-          overflow: hidden
-          padding-top: 20px
-
-          .sideContent
-            background-color: $dark_2_TR
-            padding: 5px 20px
-            border-left: solid 1px $borderOrange
-            border-right: solid 1px $borderOrange
-            &:first-child
-              padding-top: 15px
-
-            &:last-child
-              padding-bottom: 15px
-
-      #footer
-        clear: both
-        width: 100%
-        min-height: $footerHeight
-        padding: 30px 0
-        background-color: $dark_2
-        border-top: solid 1px $borderLight
-        text-align: center
-
-        span
-          margin: 0 20px
