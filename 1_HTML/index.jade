@@ -1,5 +1,60 @@
 doctype html
 html
-  head
-    title hey
-    meta 
+  include include/variables.jade
+  include include/common.jade
+  include include/head.jade
+    
+  body
+    #mainMenu.container
+      #barsIcon(class="fa fa-bars fa-3x")
+      div MENU
+
+    #page.container
+      header
+        #titleContainer.container
+          #headerTitle-1.content= title_1
+          #headerTitle-2.content= title_2
+        img(src="img/BgGuitarFlip-large_x2.jpg", alt="Guitar", class="image")
+      
+      #middle.container
+        #mainContent.content
+          h1 BENVENUTI <br>
+          p
+            span.imp Guitare Actuelle
+            | è un' iniziativa didattica a cura di <b>Dora Filippone</b>, titolare della cattedra di chitarra al conservatorio Giuseppe Verdi di Torino, ed i suoi collaboratori.
+          p
+            | Guitare Actuelle ha l'obiettibo di insegnare a suonare la chitarra (ma prima ancora LA MUSICA) a bambini e ragazzi/e.<br>
+          p 
+            | All'interno del sito troverete tutte le informazioni e i recapiti per saperne di più e, volendo, iscrivervi ai nostri corsi.<br>
+          p
+            | Immergersi nella musica a 360° attraverso la chitarra quale strumento ricco di sfaccettature e possibilità. I giovani sentono meno le barriere musicali.<br>
+          p
+            | GuitareActuelle vuole cogliere questa tendenza e considerare la chitarra in tutte le sue tipologie senza limite di generi e stili. Classica, Jazz, Blues...<br><br>
+
+          p
+            span.imp Dora Filippone
+            |<br>
+            | Ha fondato il progetto GuitareActuelle proponendosi di diffondere una prospettiva diversa dello studio della chitarra, maturata nel corso della sua pluriennale esperienza didattica e concertistica.<br><br>
+            
+          p
+            span.imp Gabriele Ferian <br>
+            |<br>
+            | Musicista laureato in chitarra jazz, didatta e compositore amante delle contaminazioni.<br><br>
+
+            span.imp VI ASPETTIAMO NUMEROSI!
+            
+        #sideContainer.container
+          .sideEl.content News
+          .sideEl.content Eventi
+          .sideEl.content Seguici
+          .sideEl.content Contatti
+      
+      footer.container
+        span(class="fa fa-music fa-3x")
+        span(class="fa fa-facebook-official fa-3x")
+        span(class="fa fa-twitter fa-3x")
+        span(class="fa fa-youtube fa-3x")
+        span(class="fa fa-soundcloud fa-3x")
+    
+    script(src="js/script.js", charset="utf-8")
+    script(src="//localhost:35729/livereload.js")

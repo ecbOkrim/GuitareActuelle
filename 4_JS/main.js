@@ -3,7 +3,7 @@ $(document).ready(loadOk);
 function loadOk(){
   var menuBtn = $("#mainMenu");
   var title = $("#titleContainer");
-  var titleTxt = $("#titleContainer").find(".title");
+  var titleTxt = $("#titleContainer").find(".content");
 
   menuBtn.on("mouseover", function(){
     mOver($(this));

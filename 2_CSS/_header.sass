@@ -1,4 +1,4 @@
-#header
+header
   width: 100%
   height: $headerHeight
   overflow: hidden
@@ -12,7 +12,7 @@
 
     div
       position: relative
-      background-color: $orange_1_TR
+      background-color: transparentize($orange_1, 0.2)
       font: normal 7rem $defFontStyle, sans-serif
       color: $borderLight
       padding: 0.5em 1em
@@ -21,7 +21,7 @@
       cursor: pointer
 
     .hovered
-      background-color: $orange_1
+      background-color: transparentize($orange_1, 0.1)
 
     #headerTitle-1
       margin-right: 2em

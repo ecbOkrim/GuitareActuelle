@@ -34,7 +34,8 @@ module.exports = function(grunt){
 				files: [{
 		      expand: true,
 		      cwd: '1_HTML/',
-		      src: ['**/*.jade'],
+		      src: ['*.jade'],		//without subdirectories
+					// src: ['**/*.jade'], 	//with subdirectories
 		      dest: '9_DIST/',
 					ext: '.html'
 		    }]
@@ -170,7 +171,7 @@ module.exports = function(grunt){
 
     watch: {
       html: {
-        files: ['1_HTML/*'],
+				files: ['1_HTML/**'],
         tasks: ['html'],
         options: {
           spawn: false,
