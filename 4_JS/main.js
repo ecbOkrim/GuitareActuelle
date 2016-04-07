@@ -2,8 +2,23 @@ $(document).ready(loadOk);
 
 function loadOk(){
   var menuBtn = $("#mainMenu");
-  var title = $("#titleContainer");
-  var titleTxt = $("#titleContainer").find(".content");
+  // var title = $("#titleContainer");
+  // var titleTxt = $("#titleContainer").find(".content");
+  var titLink = $("#titleContainer").find("a");
+  var sideLinks = $("#sideContainer").find("a");
+
+  console.log(location.pathname);
+  if(location.pathname == "/" || location.pathname == "/index.html"){
+    titLink.href = "#";
+  }
+
+  $.each(sideLinks, function(indx,item){
+    var tmp = item.href.substring(item.href.lastIndexOf("/") + 1);
+
+    if(tmp == location.pathname.substring(1)){
+      item.href = "#";
+    }
+  });
 
   menuBtn.on("mouseover", function(){
     mOver($(this));
@@ -15,12 +30,14 @@ function loadOk(){
     mClick($(this));
   });
 
+/*
   title.on("mouseover", function(){
     mOver($(titleTxt));
   });
   title.on("mouseleave", function(){
     mOut($(titleTxt));
   });
+  */
 }
 
 function mOver(a){

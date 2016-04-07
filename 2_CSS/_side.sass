@@ -1,14 +1,37 @@
 #sideContainer
   overflow: hidden
-  padding-top: 20px
+  top: 20px
+  padding: 10px 0
+  position: relative
+  background-color: $dark_2_TR
+  border-left: solid 1px $borderOrange
+  border-right: solid 1px $borderOrange
+  font-size: 2rem
+  font-weight: 400
 
   div
-    background-color: $dark_2_TR
     padding: 5px 20px
-    border-left: solid 1px $borderOrange
-    border-right: solid 1px $borderOrange
-    &:first-child
-      padding-top: 20px
+    position: relative
+    z-index: 1
 
-    &:last-child
-      padding-bottom: 20px
+    &:before
+      z-index: -1
+      content: ""
+      position: absolute
+      top: 0
+      left: 0
+      right: 0
+      bottom: 0
+      background-color: transparentize($orange_1, 0.05)
+      opacity: 0
+      +transform(scale(1, 0))
+      +transform-origin(50%, 0%)
+      +transition(all, 200ms, ease-in-out, 200ms)
+
+    &:hover:before
+      +transform(scale(1, 1))
+      opacity: 1
+
+    u
+      text-decoration: none
+      border-bottom: solid 1px

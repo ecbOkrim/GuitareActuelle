@@ -6,14 +6,9 @@
 
 @import variables
 @import colors
-@import menu
-@import header
-@import side
-@import footer
 
 *
-  //min-height: 10px
-  +transition(all, 300ms, ease-in-out, 0ms)
+  +transition(all, 2s, ease-in-out, 0ms)
 
 \:root
   font: normal 10px $defFontStyle, sans-serif
@@ -21,6 +16,11 @@
   cursor: default
 
 html
+
+  a
+    &:link, &:active, &:visited, &:hover
+      text-decoration: none
+      color: inherit
 
   body
     width: 100%
@@ -41,12 +41,13 @@ html
 
         #mainContent
           float: left
-          width: 70%
-          padding: 20px
+          width: 75%
+          padding: 20px 5%
           background-color: $dark_2
           line-height: 1.5
 
           h1
+            text-align: center
             font-size: 6rem
             font-weight: 700
             padding: 15px 0px
@@ -62,3 +63,8 @@ html
 
             b
               font-weight: 400
+
+@import menu
+@import header
+@import side
+@import footer
