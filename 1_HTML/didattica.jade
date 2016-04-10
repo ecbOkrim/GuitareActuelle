@@ -5,18 +5,14 @@ html
   include include/head.jade
     
   body
-    #mainMenu.container
-      #barsIcon(class="fa fa-bars fa-3x")
-      div MENU
-
     #page.container
       include include/mainHeader.jade
       
+      include include/topMenu.jade
       
       #middle.container
         #mainContent.content
           include include/cntPage_didattica.html
-        include include/side_1.jade
           
       include include/footer.jade
     
