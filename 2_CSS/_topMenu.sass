@@ -8,8 +8,7 @@
     position: relative
     display: inline-block
     bottom: 0px
-    overflow-top: hidden
-    width: 10%
+    width: 15%
     height: 50px
     padding: 0
     z-index: 1
@@ -17,7 +16,6 @@
     .title
       position: absolute
       width: 100%
-      //width: 200px
       height: 50px
       line-height: 50px
       color: $orange_1_TR
@@ -31,9 +29,10 @@
         position: absolute
         left: 10%
         width: 80%
+        margin-top: -2px
         height: 2px
         background-color: transparentize($orange-1, 0.5)
-        +transition(all 200ms ease-in-out 200ms)
+        +transition(all 100ms ease-in-out)
 
       .active
         left: 0
@@ -43,8 +42,8 @@
 
     .title.active
       background-color: $dark_2
-      +transition(all 300ms ease-in-out 200ms)
-      +transform(rotateZ(-90deg) translate(-52px))
+      +transition(all 300ms ease-in-out 100ms)
+      +transform(rotateZ(-90deg) translate(-50px))
 
 
     ul
@@ -56,30 +55,28 @@
 
       li
         border-bottom: solid 1px transparentize($orange-1, 0.5)
-        padding: 5px 20px
-        height: 2px
-        line-height: 30px
+        padding: 0px 20px
+        max-height: 0px
+        line-height: 1.3em
         color: transparentize($orange-1, 0.5)
         background-color: $dark_2
         cursor: pointer
-        +transform(scaleY(0))
         +transparent()
 
         &:hover
           color: $orange_1
           background-color: $dark_1
           border-bottom: solid 1px $orange-1
-          +transition(all 150ms ease-in-out )
 
       .active
-        height: 30px
-        +transform(scaleY(1) )
+        max-height: 90px
+        padding: 10px 20px
         +opaque()
 
     @for $i from 1 through 10
-      $abc: ($i * 0.1) + "s"
-      $xyz: (($i * 0.1) + 0.1)  + "s"
+      $abc: ($i * 0.075) + "s"
+      $xyz: (($i * 0.075) + 0.2)  + "s"
       ul a:nth-child(#{$i}) li
-        +transition(unquote("#{all 500ms ease-in-out} #{$abc}"), unquote("#{opacity 300ms ease-in-out} #{$xyz}"), color 200ms ease, background-color 200ms ease)
+        +transition(all 250ms ease-in-out ($i * 0.075) + s)
       ul a:nth-child(#{$i}) .active
-        +transition(unquote("#{all 500ms ease-in-out} #{$xyz}"), unquote("#{opacity 300ms ease-in-out} "), color 200ms ease, background-color 200ms ease)
+        +transition(all 250ms ease-in-out ($i * 0.075) + s)
