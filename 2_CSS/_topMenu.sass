@@ -1,23 +1,79 @@
 #topMenu
-  position: relative
+  position: absolute
+  margin-top: -50px
+  text-align: center
   width: 100%
 
-  #itemsBlock
-    position: absolute
+  .menuBase
+    position: relative
+    display: inline-block
     bottom: 0px
-    width: 100%
-    margin: 0 auto
-    background-color: rgba(0, 0, 0, 0)
+    width: 200px
+    height: 50px
+    padding: 0
+    z-index: 1
+
+    .title
+      position: absolute
+      width: 200px
+      height: 50px
+      line-height: 50px
+      color: $orange_1_TR
+      background-color: $dark_2_TR
+      text-align: center
+      +transform-origin(100%, 0%)
+      +transform(rotateZ(0deg) translate(0px))
+      +transition(all 300ms ease-in-out 200ms)
+
+      .titleBorder
+        position: absolute
+        left: 10%
+        width: 80%
+        height: 2px
+        background-color: transparentize($orange-1, 0.5)
+        +transition(all 200ms ease-in-out)
+
+      .active
+        left: 0
+        width: 100%
+        height: 2px
+        background-color: transparentize($orange-1, 0.2)
+
+    .title.active
+      +transform(rotateZ(-90deg) translate(-50px))
+
 
     ul
+      position: absolute
+      height: 0
+      padding: 0
+      width: 200px
       text-align: center
 
       li
-        display: inline-block
-        border: solid 1px $orange-1
-        border-top: 0px
-        border-bottom: 0px
-        margin-left: -1px
+        border-bottom: solid 1px transparentize($orange-1, 0.5)
         padding: 5px 20px
-        color: $orange_1_TR
-        background-color: transparentize($dark_2, 0.5)
+        height: 30px
+        line-height: 30px
+        color: transparentize($orange-1, 0.5)
+        background-color: $dark_2
+        cursor: pointer
+        +transform(translateY(-200px) scaleY(0))
+        +transparent()
+
+        &:hover
+          color: $orange_1
+          background-color: $dark_1
+          border-bottom: solid 1px $orange-1
+
+      .active
+        +transform(translateY(0px) scaleY(1) )
+        +opaque()
+
+    @for $i from 1 through 10
+      $abc: ($i * 0.1) + "s"
+      $xyz: (($i * 0.1) + 0.4)  + "s"
+      ul a:nth-child(#{$i}) li
+        +transition(unquote("#{all 500ms ease-in-out} #{$abc}"), unquote("#{opacity 300ms ease-in-out} #{$xyz}"), color 200ms ease)
+      ul a:nth-child(#{$i}) .active
+        +transition(unquote("#{all 500ms ease-in-out} #{$xyz}"), unquote("#{opacity 300ms ease-in-out} #{$abc}"), color 200ms ease)
