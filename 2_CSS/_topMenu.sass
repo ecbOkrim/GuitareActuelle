@@ -1,29 +1,30 @@
 #topMenu
   position: absolute
-  margin-top: -50px
+  margin-top: -3em
   text-align: center
   width: 100%
+  font-size: 1.6rem
 
   .menuBase
     position: relative
     display: inline-block
     bottom: 0px
-    width: 15%
-    height: 50px
+    width: 16%
+    height: 3em
     padding: 0
     z-index: 1
 
     .title
       position: absolute
       width: 100%
-      height: 50px
-      line-height: 50px
+      height: 3em
+      line-height: 3em
       color: $orange_1_TR
       background-color: $dark_2_TR
       text-align: center
       +transform-origin(100%, 0%)
       +transform(rotateZ(0deg) translate(0px))
-      +transition(all 300ms ease-in-out 400ms)
+      +transition(all 400ms ease-out)
 
       .titleBorder
         position: absolute
@@ -32,18 +33,19 @@
         margin-top: -2px
         height: 2px
         background-color: transparentize($orange-1, 0.5)
-        +transition(all 100ms ease-in-out)
+        +transition(all 100ms ease-out)
 
       .active
         left: 0
         width: 100%
         height: 2px
         background-color: transparentize($orange-1, 0.2)
+        +transition(all 100ms ease-out)
 
     .title.active
       background-color: $dark_2
-      +transition(all 300ms ease-in-out 100ms)
       +transform(rotateZ(-90deg) translate(-50px))
+      +transition(all 400ms ease-out 100ms)
 
 
     ul
@@ -77,6 +79,6 @@
       $abc: ($i * 0.075) + "s"
       $xyz: (($i * 0.075) + 0.2)  + "s"
       ul a:nth-child(#{$i}) li
-        +transition(all 250ms ease-in-out ($i * 0.075) + s)
+        +transition(all 300ms ease-in-out ($i * 0.075) + s, color 200ms, background-color 200ms, border 500ms)
       ul a:nth-child(#{$i}) .active
-        +transition(all 250ms ease-in-out ($i * 0.075) + s)
+        +transition(all 300ms ease-in-out ($i * 0.075) + s, color 500ms, background-color 500ms, border 500ms)

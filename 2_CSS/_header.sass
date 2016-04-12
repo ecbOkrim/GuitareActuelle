@@ -6,30 +6,49 @@ header
   #titleContainer
     position: absolute
     float: left
-    width: auto
+    width: 80%
     top: 4rem
-    left: 20%
+    left: 10%
 
-    div
-      position: relative
-      background-color: transparentize($orange_1, 0.2)
-      font: normal 6rem $defFontStyle, sans-serif
-      color: $borderLight
-      padding: 0.4em 1em
-      border: 0.1em solid $borderLight
-      z-index: 1
-      cursor: pointer
+    a
+      display: inline-block
 
-    //.hovered
-    &:hover .content
-      background-color: transparentize($orange_1, 0.1)
+      div
+        position: relative
+        background-color: transparentize($orange_1, 0.2)
+        font: normal 6rem $defFontStyle, sans-serif
+        color: $borderLight
+        padding: 0.4em 1em
+        border: 0.1em solid $borderLight
+        z-index: 1
+        cursor: pointer
+        +transition(all 400ms ease-in-out)
 
-    #headerTitle-1
-      margin-right: 2em
+      //.hovered
+      &:hover .content
+        background-color: transparentize($orange_1, 0.1)
 
-    #headerTitle-2
-      margin-top: -0.1em
-      margin-left: 2em
+      #headerTitle-1
+        margin-right: 2em
+
+      #headerTitle-2
+        margin-top: -0.1em
+        margin-left: 2em
+
+    #subtitle
+      position: absolute
+      display: inline-block
+      font-size: 3rem
+      top: 50%
+      bottom: 50%
+      margin-left: 2.5em
+      color: $textBold
+
+@media screen and (max-width: 1430px){
+  #subtitle
+    width: 20%
+}
+
 
   img
     margin-top: -60px

@@ -1,11 +1,13 @@
 var delayId = null;
 var delayActive = false;
-var menuBase = null;
 
 $(document).ready(loadOk);
 
 function loadOk(){
-  menuBase = $(".menuBase");
+  var menuBase = $(".menuBase");
+  var mainH1 = $("#mainContent").find("h1").first().delay(500).queue(function(){animate($(this));});
+
+
   menuBase.on("mouseover", function(){
     menuBase.not(this).each(function(){
       mOut($(this));
@@ -16,6 +18,10 @@ function loadOk(){
   menuBase.on("mouseleave", function(){
     mOutDelay($(this));
   });
+}
+
+function animate(a){
+  $(a).addClass("animate").dequeue();
 }
 
 function mOver(a){
